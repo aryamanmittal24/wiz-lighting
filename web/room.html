@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WiZ Studio · Room in light</title>
+  <link rel="stylesheet" href="/room.css">
+  <script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header><a class="brand" href="/">wız <small>STUDIO</small></a><nav><a href="/#lights">Lights</a><a href="/#scenes">Scenes</a><a href="/#music-sync">Music</a><a href="/#screen-sync">Screen Sync</a><a href="/#hand-control">Hand Control</a><a href="/#patterns">Patterns</a><a class="active" href="/room" aria-current="page">3D Room</a><a href="/astronaut">Astronaut</a><a href="/health">Health</a></nav><span id="connection">Connecting to your lights…</span></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">YOUR SPACE, IN A DIFFERENT LIGHT</p><h1>Room in <em>light.</em></h1><p>Your room is the controller. Paint it with light.</p></div><div class="room-size">BEDROOM <b>11′ × 10′</b><span>Photo-based room model</span></div></div>
+    <section class="studio-bar" aria-label="Studio controls">
+ <div class="mode-switch"><button id="preview-mode" aria-pressed="true">◉ Preview</button><button id="live-mode" aria-pressed="false">Live control</button></div>
+ <span id="mode-description">Explore looks in 3D · bulbs stay unchanged</span>
+ <button id="apply-preview">Apply preview to room</button><button id="night-view" aria-pressed="true">☾ Night view</button>
+ </section>
+ <div class="workspace">
+      <section class="scene-panel" aria-label="Interactive bedroom">
+        <div class="scene-toolbar"><span><i></i> YOUR BEDROOM</span><div><button data-view="room">Room</button><button data-view="top">Above</button><button data-view="bed">Bedside</button></div></div>
+        <div id="viewport"><div id="loading">Building your room…</div><div id="markers"></div></div>
+        <div class="scene-footer"><span>Drag to orbit · Scroll to zoom · Select a numbered light</span><button id="labels" aria-pressed="true">Labels on</button></div>
+      </section>
+      <aside class="inspector">
+        <div class="eyebrow">LIGHT CONSOLE</div><label class="scope-label" for="scope">Control scope</label><select id="scope"><option value="selected">Selected fixture</option><option value="bed">Both bed lights</option><option value="lamps">Floor + table lamps</option><option value="all">Entire room</option></select><div class="fixture-title"><h2 id="name">Floor Lamp</h2><span id="number">01</span></div><p id="location">Beside the window, behind the side table</p>
+        <div class="device-state"><span id="status">Waiting for bulb…</span><button id="power" class="power" aria-label="Toggle selected light" aria-pressed="false" disabled>Off</button></div>
+        <fieldset id="controls" disabled>
+          <label class="range-label" for="brightness">Brightness <output id="brightness-value">—</output></label><input id="brightness" type="range" min="1" max="100" value="50">
+          <div class="range-ends"><span>SOFT</span><span>BRIGHT</span></div>
+          <label class="color-label" for="color">Color <input type="color" id="color" value="#ffbf80"></label>
+          <div class="swatches" aria-label="Color choices"><button data-color="#ffb363" style="--swatch:#ffb363" aria-label="Amber"></button><button data-color="#ff749b" style="--swatch:#ff749b" aria-label="Rose"></button><button data-color="#bb87ff" style="--swatch:#bb87ff" aria-label="Lilac"></button><button data-color="#58a6ff" style="--swatch:#58a6ff" aria-label="Blue"></button><button data-color="#5de8be" style="--swatch:#5de8be" aria-label="Mint"></button></div>
+          <div class="range-label">White temperature</div><div class="temperatures"><button data-temp="2700">Warm <small>2700 K</small></button><button data-temp="4000">Soft <small>4000 K</small></button><button data-temp="6500">Cool <small>6500 K</small></button></div>
+        </fieldset>
+        <p class="hint" id="control-hint">Preview changes only the model. Switch to Live control to change your bulbs. Rendered lighting is approximate.</p>
+        <details><summary>Fixture connection</summary><label for="binding">Bulb assigned to this position</label><select id="binding"></select><p>Change this if a fixture is in a different position. Saved in this browser.</p></details>
+      </aside>
+    </div>
+    <section class="fixtures" aria-label="Select a room fixture" id="fixtures"></section>
+    <section class="looks-section"><div class="section-heading"><div><p class="eyebrow">ONE ROOM. MANY MOODS.</p><h2>Find your atmosphere</h2></div><span>Four fixtures, composed together</span></div><div id="moods" class="moods"></div></section>
+ <section class="save-section"><div><p class="eyebrow">MAKE IT YOURS</p><h2>Your saved looks</h2><p>Save all four fixtures, then recall the whole room.</p></div><form id="save-look"><input id="look-name" maxlength="40" placeholder="Name this look…" aria-label="Scene name" required><button type="submit">＋ Save look</button></form><div id="saved-looks"></div></section>
+ <footer><span><i></i> Local WiZ control · No cloud connection</span><span id="updated">Waiting for current states</span></footer>
+  </main>
+  <div id="notice" role="status" aria-live="polite"></div>
+  <script type="module" src="/room.js"></script>
+</body></html>

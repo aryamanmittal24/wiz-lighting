@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Music worklet verification</title>
+<h1>Audio-clock detector verification</h1><p>Synthetic 120 BPM drum signal. No microphone, speaker playback, or bulb commands.</p>
+<button id="run">Run silent worklet test</button><pre id="result">Ready</pre>
+<script>
+document.querySelector('#run').onclick=async()=>{
+ const out=document.querySelector('#result');out.textContent='Running six seconds of synthetic audio…';
+ let context;
+ try{
+  context=new AudioContext();await context.audioWorklet.addModule('/web/music-worklet.js');
+  const node=new AudioWorkletNode(context,'music-detector',{numberOfInputs:2,numberOfOutputs:1,outputChannelCount:[1]});
+  const buffer=context.createBuffer(1,context.sampleRate*6,context.sampleRate),pcm=buffer.getChannelData(0);
+  for(let i=0;i<pcm.length;i++){const p=(i/context.sampleRate)%.5;pcm[i]=p<.12?.5*Math.sin(2*Math.PI*(65*p-55*p*p))*Math.exp(-p*45):0;}
+  const source=context.createBufferSource();source.buffer=buffer;source.connect(node);node.connect(context.destination);
+  let frames=0,hits=0,bpm=0;node.port.onmessage=e=>{frames++;if(e.data.hit!==null)hits++;if(e.data.bpm)bpm=e.data.bpm;};
+  node.onprocessorerror=()=>out.textContent='FAIL: worklet processor error';
+  await context.resume();source.start();
+  source.onended=()=>setTimeout(async()=>{out.textContent=frames>500&&hits>=9&&Math.abs(bpm-120)<4?`PASS: ${frames} timestamped frames, ${hits} attacks, ${Math.round(bpm)} BPM. Worklet loaded and ran in Chrome.`:`FAIL: ${frames} frames, ${hits} attacks, ${bpm} BPM`;node.disconnect();await context.close();},100);
+ }catch(e){out.textContent='FAIL: '+e.stack;if(context)await context.close();}
+};
+</script>

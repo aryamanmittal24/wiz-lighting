@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Astronaut · WiZ Studio</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/astronaut.css"></head>
+<body><aside>
+  <a class="brand" href="/">w<span>ı</span>z<span class="brand-small">STUDIO</span></a>
+  <div class="rail-label">YOUR SPACE</div>
+  <a class="nav" href="/room">◇ <span>3D Room</span></a>
+  <a class="nav" href="/#lights">◉ <span>Lights</span></a>
+    <a class="nav" href="/#scenes">◈ <span>Scenes</span></a>
+    <a class="nav" href="/#music-sync">♫ <span>Music</span></a>
+    <a class="nav" href="/#screen-sync">▣ <span>Screen Sync</span></a>
+    <a class="nav" href="/#hand-control">✋ <span>Hand Control</span></a>
+    <a class="nav" href="/#patterns">≋ <span>Patterns</span></a>
+  <a class="nav active" href="/astronaut" aria-current="page">✦ <span>Astronaut</span></a>
+  <a class="nav" href="/health">♥ <span>Health</span></a>
+  <div class="rail-bottom"><span class="dot"></span> Made for your Mac<br><small>Local control · No cloud needed</small></div>
+</aside><main>
+  <header><span class="breadcrumb">YOUR SPACE <b>/</b> ASTRONAUT</span><span id="connection" class="connection">Checking ESP32…</span></header>
+  <section class="astro-hero"><div class="eyebrow">PROJECTOR + ROOM LIGHTS</div><h1>Astronaut <em>sync.</em></h1>
+    <p>Use the astronaut remote to change your WiZ lights while it controls the projector. Your ESP32 listens over USB.</p></section>
+  <section class="astro-card"><div class="astro-card-head"><div><h2>Remote bridge</h2><p id="status">Checking connection…</p></div><div class="button-row"><button id="start" class="primary">Start listening</button><button id="stop" class="secondary" disabled>Stop</button></div></div>
+    <p id="last-button" class="astro-event">No button received yet.</p><p id="error" class="astro-error" role="status"></p>
+  </section>
+  <section class="astro-card"><div class="astro-card-head"><div><h2>Button map</h2><p>Choose what each remote button does to all online WiZ lights. Changes save on this Mac.</p></div><button id="save" class="secondary">Save map</button></div><div id="button-map" class="astro-map"></div></section>
+  <section class="astro-card"><h2>What can sync?</h2><div class="astro-features"><p><strong>Now:</strong> One remote press affects the projector and WiZ lights together. Try Nebula to step through a matching room palette; B+ and B− adjust brightness.</p><p><strong>Next hardware step:</strong> Wire the IR emitter and transistor, then the ESP32 can send projector commands from this page and coordinate scenes without pressing the remote.</p><p><strong>Color limit:</strong> This remote exposes mode and relative brightness/speed buttons, not exact RGB values. The WiZ colors are coordinated palettes, not a pixel-perfect projector color match.</p></div></section>
+</main><script src="/astronaut.js" defer></script></body></html>

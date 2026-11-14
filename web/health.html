@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health · WiZ Studio</title>
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/health.css">
+</head>
+<body>
+  <aside>
+    <a class="brand" href="/">w<span>ı</span>z<span class="brand-small">STUDIO</span></a>
+    <div class="rail-label">YOUR SPACE</div>
+    <a class="nav" href="/room">◇ <span>3D Room</span></a>
+    <a class="nav" href="/#lights">◉ <span>Lights</span></a>
+    <a class="nav" href="/#scenes">◈ <span>Scenes</span></a>
+    <a class="nav" href="/#music-sync">♫ <span>Music</span></a>
+    <a class="nav" href="/#screen-sync">▣ <span>Screen Sync</span></a>
+    <a class="nav" href="/#hand-control">✋ <span>Hand Control</span></a>
+    <a class="nav" href="/#patterns">≋ <span>Patterns</span></a>
+    <a class="nav" href="/astronaut">✦ <span>Astronaut</span></a>
+    <a class="nav active" href="/health" aria-current="page">♥ <span>Health</span></a>
+    <div class="rail-bottom"><span class="dot"></span> Made for your Mac<br><small>Local light control</small></div>
+  </aside>
+  <main>
+    <header><span class="breadcrumb">YOUR SPACE <b>/</b> HEALTH</span><span id="connection" class="connection">Checking…</span></header>
+    <section class="health-intro">
+      <div class="eyebrow">YOUR RHYTHM, YOUR ROOM</div>
+      <h1>Health meets <em>light.</em></h1>
+      <p>See your synced Fitbit readings and let a fresh heart-rate sample set the mood.</p>
+    </section>
+    <section class="health-card">
+      <div><h2>Google Health</h2><p id="status">Checking connection…</p></div>
+      <div class="health-actions"><button id="connect">Connect Google Health</button><button id="disconnect" class="secondary" hidden>Disconnect</button></div>
+    </section>
+    <section class="health-grid">
+      <article class="health-card"><div class="eyebrow">LATEST SYNCED SAMPLE</div><h2 id="bpm">—</h2><p id="heart-time">Heart rate not loaded</p></article>
+      <article class="health-card"><div class="eyebrow">RECENT SESSION</div><h2 id="sleep">—</h2><p id="sleep-time">Sleep not loaded</p></article>
+    </section>
+    <section class="health-card effect">
+      <div><h2>Heart-rate color</h2><p>Calm blue below 70 BPM, teal at 70–99, warm amber at 100–129, coral above 130. Updates at most once a minute; stale samples never change your lights.</p></div>
+      <div id="lights" class="health-lights"></div>
+      <div class="health-actions"><button id="start" disabled>Start color mode</button><button id="stop" class="secondary" disabled>Stop</button><button id="refresh" class="secondary">Refresh readings</button></div>
+      <p id="effect-status" class="fine">Color mode only runs while this tab stays open. It is a mood effect, not a live heartbeat visualizer or medical alert.</p>
+    </section>
+    <p class="fine">Google Health data arrives after your Fitbit syncs. Sleep sessions may arrive after you wake; don’t rely on this for real-time sleep detection, locks, security, or safety-critical actions.</p>
+  </main>
+  <script src="/health.js" defer></script>
+</body>
+</html>

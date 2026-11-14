@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WiZ Studio — Your room, your rhythm</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <aside>
+      <a class="brand" href="/"
+        >w<span>ı</span>z<span class="brand-small">STUDIO</span></a
+      >
+      <div class="rail-label">YOUR SPACE</div>
+      <a class="nav" href="/room">◇ <span>3D Room</span></a>
+      <a class="nav active" href="#lights" data-tab="lights" aria-label="Lights" aria-current="page">◉ <span>Lights</span></a>
+      <a class="nav" href="#scenes" data-tab="scenes" aria-label="Scenes">◈ <span>Scenes</span></a>
+      <a class="nav" href="#music-sync" data-tab="music" aria-label="Music">♫ <span>Music</span></a>
+      <a class="nav" href="#screen-sync" data-tab="screen" aria-label="Screen Sync">▣ <span>Screen Sync</span></a>
+      <a class="nav" href="#hand-control" data-tab="hands" aria-label="Hand Control">✋ <span>Hand Control</span></a>
+      <a class="nav" href="#patterns" data-tab="patterns" aria-label="Patterns">≋ <span>Patterns</span></a>
+      <a class="nav" href="/astronaut">✦ <span>Astronaut</span></a>
+      <a class="nav" href="/health">♥ <span>Health</span></a>
+      <div class="rail-bottom">
+        <span class="dot"></span> Made for your Mac<br /><small
+          >Local control · No cloud needed</small
+        >
+      </div>
+    </aside>
+    <main>
+      <header>
+        <span class="breadcrumb">YOUR SPACE <b>/</b> <span id="view-title">LIGHTS</span></span
+        ><span id="connection" class="connection">Connecting…</span>
+      </header>
+      <section class="intro" data-view="lights">
+        <div>
+          <div class="eyebrow">A LITTLE LIGHT. A LOT OF POSSIBILITY.</div>
+          <h1>Your room,<br /><em>your rhythm.</em></h1>
+          <p>Set the mood. Shape the color. Make it yours.</p>
+          <a class="room-entry" href="/room">◇ &nbsp; Open 3D room <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="orb-art" aria-hidden="true">
+          <div class="orb"></div>
+          <span>LIGHT, WITHOUT LIMITS</span>
+        </div>
+      </section>
+      <section id="lights" data-view="lights">
+        <div class="section-title">
+          <div>
+            <h2>Your light deck <span id="count" class="count">0</span></h2>
+            <p>Four independent channels. Every control responds live.</p>
+          </div>
+          <div class="button-row">
+            <button id="identify" class="secondary">Identify lights</button
+            ><button id="rescan" class="secondary">↻ Rescan</button>
+          </div>
+        </div>
+        <div id="lights-grid" class="lights-grid">
+          <p class="empty">Looking for lights on your network…</p>
+        </div>
+      </section>
+      <section id="scenes" class="scene-library-panel" data-view="scenes" hidden>
+        <div class="section-title"><div><div class="eyebrow">ONE ROOM. MANY ATMOSPHERES.</div><h1>Set the <em>scene.</em></h1><p>Composed palettes across your lights, from quiet evenings to neon nights.</p></div><span class="tag">18 room scenes</span></div>
+        <div class="scene-filters" role="group" aria-label="Filter scenes">
+          <button data-scene-filter="All" aria-pressed="true">All</button>
+          <button data-scene-filter="Relax" aria-pressed="false">Relax</button>
+          <button data-scene-filter="Focus" aria-pressed="false">Focus</button>
+          <button data-scene-filter="Cinema" aria-pressed="false">Cinema</button>
+          <button data-scene-filter="Party" aria-pressed="false">Party</button>
+        </div>
+        <div id="scene-library" class="scene-library"></div>
+        <p class="hint">One tap applies a steady palette in your room’s light order. Save your own combinations below.</p>
+      </section>
+      <section id="looks" class="saved-section" data-view="scenes" hidden>
+        <div class="section-title">
+          <div>
+            <h2>Saved looks</h2>
+            <p>Your favorite combinations, ready when you are.</p>
+          </div>
+          <button id="save-look" class="secondary">＋ Save current look</button>
+        </div>
+        <div id="saved-looks" class="saved-looks"></div>
+      </section>
+      <section id="patterns" class="motion-studio" data-view="patterns" hidden>
+        <div class="section-title"><div><div class="eyebrow">PATTERN LAB · LIGHT IN MOTION</div><h1>Move the <em>mood.</em></h1><p>Send colour across the room. Chase, drift, breathe, or flash.</p></div><span id="pattern-status" class="tag" role="status">Stopped</span></div>
+        <div class="motion-layout">
+          <div class="motion-stage">
+            <div class="motion-stage-heading"><span>MOTION PREVIEW</span><span id="motion-preview-label">Travelling Gradient</span></div>
+            <div id="pattern-preview" class="pattern-preview" aria-label="Animation preview in room light order"></div>
+            <p class="hint">Illustrative preview. Physical timing depends on the bulbs and Wi-Fi. Previewing never changes your lights.</p>
+            <div class="motion-description"><h2 id="motion-title">Travelling Gradient</h2><p id="thunder-description">A ribbon of colour travels through every light.</p></div>
+            <p class="hint motion-caution">Flashing lights may trigger photosensitive seizures. Choose gradients or breathing for steady motion. Stop restores your previous look.</p>
+          </div>
+          <div class="motion-controls">
+            <label for="thunder-mode">Animation</label>
+            <select id="thunder-mode">
+              <optgroup label="Flow and movement">
+                <option value="gradient" selected>Travelling Gradient</option>
+                <option value="chase">Light Chase</option>
+                <option value="bounce">Bounce Scanner</option>
+                <option value="comet">Comet Trail</option>
+                <option value="aurora-flow">Aurora Flow</option>
+                <option value="breathe">Room Breathing</option>
+              </optgroup>
+              <optgroup label="Flashes">
+                <option value="strobe">Room Strobe</option>
+                <option value="alternating">Alternating Strobe</option>
+                <option value="classic">Thunder Classic</option>
+                <option value="storm">Thunderstorm</option>
+              </optgroup>
+            </select>
+            <div id="motion-options">
+              <div class="motion-control-label"><label for="pattern-speed">Speed</label><output id="pattern-speed-label">50%</output></div>
+              <input id="pattern-speed" type="range" min="10" max="100" value="50">
+              <div class="motion-control-label"><label for="pattern-brightness">Brightness</label><output id="pattern-brightness-label">65%</output></div>
+              <input id="pattern-brightness" type="range" min="10" max="100" value="65">
+              <label for="pattern-palette">Palette</label>
+              <select id="pattern-palette"><option value="rainbow">Rainbow</option><option value="neon">Neon pink & cyan</option><option value="sunset">Sunset</option><option value="ocean">Ocean</option></select>
+              <label for="pattern-direction">Direction</label>
+              <select id="pattern-direction"><option value="forward">Left to right</option><option value="reverse">Right to left</option></select>
+            </div>
+            <p id="motion-apply-hint" class="hint">Preview first, then start. Uses your saved room light order.</p>
+            <div class="button-row"><button id="start-thunder" class="primary">Start animation</button><button id="stop-thunder" class="secondary" disabled>Stop & restore</button></div>
+          </div>
+        </div>
+      </section>
+      <section id="screen-sync" class="screen-panel" data-view="screen" hidden>
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">SCREEN SYNC · LIVE LOCAL CAPTURE</div>
+            <h2>Screen Sync</h2>
+            <p>
+              Drag each bulb marker onto the part of the shared screen it should
+              follow.
+            </p>
+          </div>
+          <span id="sync-status" class="tag">Ready</span>
+        </div>
+        <div class="screen-sync-layout">
+          <div
+            id="sync-map"
+            class="capture-visual"
+            aria-label="Adjustable screen sampling map"
+          >
+            <button
+              class="sample-point point-one"
+              data-index="0"
+              aria-label="Move sampling point for left light"
+            >
+              <i></i><span>CH 01</span
+              ><strong class="point-name">Left</strong></button
+            ><button
+              class="sample-point point-two"
+              data-index="1"
+              aria-label="Move sampling point for middle-left light"
+            >
+              <i></i><span>CH 02</span
+              ><strong class="point-name">Mid left</strong></button
+            ><button
+              class="sample-point point-three"
+              data-index="2"
+              aria-label="Move sampling point for middle-right light"
+            >
+              <i></i><span>CH 03</span
+              ><strong class="point-name">Mid right</strong></button
+            ><button
+              class="sample-point point-four"
+              data-index="3"
+              aria-label="Move sampling point for right light"
+            >
+              <i></i><span>CH 04</span><strong class="point-name">Right</strong>
+            </button>
+            <div class="capture-scanline"></div>
+          </div>
+          <div class="sync-controls">
+            <div class="capture-copy">
+              <strong>Place each bulb anywhere.</strong>
+              <p>
+                Each marker samples the color directly underneath it. Drag them
+                before or while sync is running.
+              </p>
+              <button id="reset-sync-points" class="quiet">
+                Reset marker positions
+              </button>
+            </div>
+            <div class="label-row">
+              <label for="sync-brightness">Maximum brightness</label
+              ><output id="sync-brightness-value">85%</output>
+            </div>
+            <input
+              type="range"
+              id="sync-brightness"
+              min="1"
+              max="100"
+              step="1"
+              value="85"
+            />
+            <div class="button-row">
+              <button id="sync-start" class="primary">
+                Choose screen & start</button
+              ><button id="sync-stop" class="secondary" disabled>
+                Stop sync
+              </button>
+            </div>
+            <p class="hint">
+              Share a Chrome tab, window, or entire screen. Positions are
+              remembered on this Mac.
+            </p>
+          </div>
+        </div>
+</section>
+<section id="hand-control" class="hand-panel" data-view="hands" hidden>
+  <div class="section-title">
+    <div>
+      <div class="eyebrow">HAND CONTROL · LIVE CAMERA</div>
+      <h2>Hand control</h2>
+      <p>Use one or two hands to light their zones. Raise each hand to brighten its lights.</p>
+    </div>
+    <span id="hand-status" class="tag">Camera off</span>
+  </div>
+  <div class="hand-layout">
+    <div class="hand-camera">
+      <video id="hand-video" autoplay muted playsinline></video>
+      <canvas id="hand-overlay" aria-hidden="true"></canvas>
+      <div class="hand-guide"><span>LEFT</span><span>LEFT 2</span><span>MIDDLE 2</span><span>RIGHT 2</span><span>RIGHT</span></div>
+    </div>
+    <div class="hand-controls">
+      <div class="capture-copy"><strong id="hand-zone">Show one or two hands to begin.</strong><p id="hand-brightness">Each hand height sets its zone brightness.</p></div>
+      <div class="hand-legend"><span>↑ higher = brighter</span><span>↓ lower = dimmer</span></div>
+      <div class="button-row"><button id="hand-start" class="primary">Start hand control</button><button id="hand-stop" class="secondary" disabled>Stop</button></div>
+      <p class="hint">Camera video stays on this Mac. It is used only to track your hand and control your local WiZ lights.</p>
+    </div>
+  </div>
+</section>
+<section id="music-sync" class="music-panel" data-view="music" hidden>
+        <div class="section-title">
+          <div>
+            <div class="eyebrow">MUSIC SYNC · TRACK & LIVE AUDIO</div>
+            <h2>Music Sync</h2>
+            <p>
+              Analyse a song ahead of playback, or follow audio from a browser tab.
+            </p>
+          </div>
+          <span id="music-status" class="tag">Ready</span>
+        </div>
+        <div class="music-controls">
+          <label for="music-source">Music source</label>
+          <select id="music-source">
+            <option value="track">Song file · advance analysis</option>
+            <option value="live">Live browser audio · YouTube / Spotify</option>
+          </select>
+          <div id="track-panel" class="track-panel">
+            <label for="track-file">Choose a song</label>
+            <input id="track-file" type="file" accept="audio/*,.mp3,.wav,.m4a,.flac,.ogg">
+            <p id="track-status" role="status">Choose an audio file up to 15 minutes long. Analysis stays on this Mac.</p>
+            <canvas id="track-waveform" width="1000" height="160" aria-label="Song waveform: bass in orange, mids in green, highs in blue; vertical lines mark beats"></canvas>
+            <label for="track-position">Song position</label>
+            <input id="track-position" type="range" min="0" max="1" step="0.01" value="0" disabled>
+            <div class="track-readout"><output id="track-time">0:00 / 0:00</output><span>BASS · MIDS · HIGHS</span></div>
+            <div class="button-row"><button id="track-play" class="primary" disabled>Play with lights</button><button id="track-pause" class="secondary" disabled>Pause</button></div>
+            <p class="hint">Drum attacks are scheduled ahead using the audio output clock. Speaker timing can be measured below; WiZ response is estimated. Files remain in memory until you leave or choose another song.</p>
+          </div>
+          <div id="live-music-help" class="tempo-behavior" hidden>
+            Play YouTube or Spotify in a Chrome tab, then choose that tab and enable <strong>Share audio</strong>. This follows live sound; it cannot analyse the whole song in advance. Protected playback may not share audio.
+          </div>
+          <label for="music-mode">Visualizer</label
+          ><select id="music-mode">
+            <option value="adaptive">Adaptive tempo</option>
+            <option value="techno">Techno strobe</option>
+            <option value="single">Single shade</option>
+            <option value="party">Party Club</option>
+            <option value="spectrum">Three-band spectrum</option>
+            <option value="beat" selected>Beat flash</option>
+            <option value="flow">Color flow</option>
+            <option value="ambient">Ambient energy</option>
+          </select>
+          <div class="tempo-readout">
+            <span>AUTO TEMPO</span><output id="music-bpm">Listening…</output
+            ><i id="beat-indicator" aria-hidden="true"></i>
+          </div>
+          <div id="tempo-behavior" class="tempo-behavior">Flashes follow detected hits; tempo settles over several seconds.</div>
+          <div class="tempo-behavior">
+            <strong>Bose SoundLink Revolve+ II · Bluetooth</strong>
+            <p id="music-timing">Bose preset · estimated timing</p>
+            <button id="music-calibrate" class="secondary" disabled>Measure speaker timing</button>
+            <p class="hint">Play music, then measure using your Mac’s microphone near the speaker. Audio stays on this Mac; the microphone turns off after measurement. No sliders needed.</p>
+          </div>
+          <div class="music-level">
+            <span>Audio level</span
+            ><meter id="music-level" min="0" max="1" value="0">0%</meter>
+          </div>
+          <div class="button-row">
+            <button id="music-start" class="primary" hidden>Share music tab & sync</button
+            ><button id="music-stop" class="secondary" disabled>
+              Stop music sync
+            </button>
+          </div>
+          <p class="hint">
+            Beat flash follows detected attacks, not a generated metronome. Bluetooth and Wi-Fi timing vary; measurement improves alignment but cannot guarantee sample-perfect flashes.
+          </p>
+        </div>
+      </section>
+      <footer>
+        WiZ Studio <span>Built for your space. Controlled from this Mac.</span>
+      </footer>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="name-dialog">
+      <form id="name-form">
+        <h2 id="dialog-title">Name your light</h2>
+        <label for="name-input">Name</label
+        ><input id="name-input" maxlength="40" required autocomplete="off" />
+        <div class="button-row">
+          <button type="button" id="cancel-dialog" class="secondary">
+            Cancel</button
+          ><button type="submit" class="primary">Save</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="/music-dsp.js"></script>
+    <script src="/track-timeline.js"></script>
+    <script src="/studio-scenes.js"></script>
+    <script src="/app.js"></script>
+    <script src="/track-player.js"></script>
+    <script src="/pattern-ui.js"></script>
+    <script src="/studio-tabs.js"></script>
+  </body>
+</html>

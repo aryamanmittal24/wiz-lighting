@@ -1,0 +1,12 @@
+.venv-analysis/
+__pycache__/
+*.pyc
+
+settings.json
+.env
+.env.*
+!.env.example
+*token*.json
+client_secret*.json
+backups/
+.DS_Store
