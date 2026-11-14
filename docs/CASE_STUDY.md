@@ -25,7 +25,7 @@ The goal was to control a real bedroom's WiZ lights from a local dashboard, then
 
 ## Evidence
 
-The source includes focused Python tests, JavaScript checks and browser test harnesses. The publication run passed 35 Python tests. Screenshots, audio captures and personal device configuration are deliberately excluded from the public repository. Physical timing and generalization to other rooms are not benchmarked.
+The source includes focused Python tests, JavaScript checks and browser test harnesses. The publication run passed 35 Python tests. Selected interface screenshots are included; audio captures and personal device configuration are excluded. Physical timing and generalization to other rooms are not benchmarked.
 
 ## How to read the history
 
